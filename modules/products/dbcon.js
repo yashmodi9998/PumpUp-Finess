@@ -16,16 +16,35 @@ async function connection() {
   db = client.db("supplements");
   return db;
 }
+
 async function getProducts() {
   db = await connection();
   var results = db.collection("products").find({});
   res = await results.toArray();
   return res;
 }
+
+async function getProductById(productId) {
+  db = await connection();
+  return db.collection("products").findOne({ _id: new ObjectId(productId) });
+}
+
 async function addProduct(product) {
   db = await connection();
   var status = await db.collection("products").insertOne(product);
   console.log("states " + status);
+}
+
+async function updateProduct(productId, updatedProduct) {
+  db = await connection();
+  await db
+    .collection("products")
+    .updateOne({ _id: new ObjectId(productId) }, { $set: updatedProduct });
+}
+
+async function deleteProduct(productId) {
+  db = await connection();
+  await db.collection("products").deleteOne({ _id: new ObjectId(productId) });
 }
 
 async function searchProducts(query) {
@@ -37,4 +56,12 @@ async function searchProducts(query) {
 
   return products;
 }
-module.exports = { getProducts, addProduct, searchProducts };
+
+module.exports = {
+  getProducts,
+  getProductById,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+  searchProducts,
+};

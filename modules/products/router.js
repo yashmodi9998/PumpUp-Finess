@@ -55,12 +55,66 @@ router.post("/products/new", async (request, response) => {
 
 router.get("/products/search", async (req, res) => {
   try {
-      const searchQuery = req.query.searchQuery || ""; // Get the search query from the request parameters
-      let products = await model.searchProducts(searchQuery); // Call a new function in your model to handle the search
-      res.render("products", { title: "Products", items: products, searchQuery });
+    const searchQuery = req.query.searchQuery || ""; // Get the search query from the request parameters
+    let products = await model.searchProducts(searchQuery); // Call a new function in your model to handle the search
+    res.render("products", { title: "Products", items: products, searchQuery });
   } catch (error) {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+router.get("/manageproducts", async (req, res) => {
+  try {
+    let products = await model.getProducts();
+    res.render("manageproducts", { title: "Manage Products", items: products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.get("/manageproducts/edit-product/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await model.getProductById(productId);
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    res.render("edit-product", { title: "Edit Product", product });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.post("/manageproducts/update/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const updatedProduct = {
+      name: req.body.name,
+      category: req.body.category,
+      price: req.body.price,
+      quantity_available: req.body.quantity_available,
+      description: req.body.description,
+    };
+    await model.updateProduct(productId, updatedProduct);
+    res.redirect("/manageproducts");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.get("/manageproducts/delete/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    await model.deleteProduct(productId);
+    res.redirect("/manageproducts");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 

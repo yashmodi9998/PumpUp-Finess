@@ -1,0 +1,33 @@
+extends common/layout
+
+block layout-content
+    div.container
+        h2.mb-4.text-center.display-5 Edit Product
+
+        form(action=`/manageproducts/update/${product._id}`, method="post")
+                    .mb-3
+                        label(for="name", class="form-label") Product Name
+                        input(type="text", class="form-control", id="name", name="name", value=product.name,required)
+
+                    .mb-3
+                        label(for="category", class="form-label") Category
+                        select(class="form-select", id="category", name="category" required)
+                            option(value="Creatine", selected=product.category === 'Creatine') Creatine
+                            option(value="Protein",selected=product.category === 'Protein') Protein
+                            option(value="Antioxidants",selected=product.category === 'Antioxidants') Antioxidants
+                            option(value="Amino Acids",selected=product.category === 'Amino Acids') Amino Acids
+                            option(value="Pre-workout",selected=product.category === 'Pre-workout') Pre-workout
+                    .mb-3
+                        label(for="price", class="form-label") Price
+                        input(type="number", class="form-control", id="price", name="price" , value=product.price,step="0.01", required)
+
+                    .mb-3
+                        label(for="quantity_available", class="form-label") Quantity Available
+                        input(type="number", class="form-control", id="quantity_available", value=product.quantity_available,name="quantity_available", required)
+
+                    .mb-3
+                        label(for="description", class="form-label") Description
+                        textarea(class="form-control", id="description", name="description", value=product.description, rows="3", required)= product.description
+
+                    .mb-3
+                        button(type="submit", class="btn btn-light") Update Product

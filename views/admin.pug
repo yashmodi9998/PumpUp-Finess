@@ -5,6 +5,7 @@ block layout-content
     .container
         h2.mb-4.text-center.display-5  Current instock items
         .row
+        a.btn.btn-light(href="/manageproducts", role="button") Manage products
         each product in items
             - categoryCounts[product.category] = (categoryCounts[product.category] || 0) + 1
         table.table.table-hover.table-bordered.mx-auto
@@ -17,7 +18,7 @@ block layout-content
                 tr
                     td #{category}
                     td #{count}
-
+    
     .container
         h2.mb-3.text-center 
             button.btn.btn-link(data-bs-toggle="collapse", data-bs-target="#addProductForm", aria-expanded="false", aria-controls="addProductForm") Want to add new Product?

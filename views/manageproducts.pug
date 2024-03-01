@@ -1,0 +1,34 @@
+extends common/layout
+block layout-content
+ 
+    div.container
+        h2.mb-4.text-center.display-5  Our Products
+        form(action="/products/search", method="get",role="search", class="mb-4 d-flex")
+            .form-group.flex-grow-1
+                input.form-control(type="text", name="searchQuery", placeholder="Search products...")
+            button.btn.btn-light(type="submit") Search
+
+        div.row.row-cols-4
+            each product in items 
+                div.col-md-3.mb-4
+                    div.card
+                        .card-body
+                            if product.category === "Creatine"
+                                img.card-img-top(src="/images/creatine.jpg", alt="Amino Acids Image", class="img_size")
+                            else if product.category === "Protein"
+                                img.card-img-top(src="/images/protein.jpg", alt="Protein" , class="img_size")
+                            else if product.category === "Antioxidants"
+                                img.card-img-top(src="/images/antioxident.jpg", alt="antioxident", class="img_size")
+                            else if product.category === "Amino Acids"
+                                img.card-img-top(src="/images/aminoacids.jpg", alt="Amino Acids", class="img_size")
+                            else if product.category === "Pre-workout"
+                                img.card-img-top(src="/images/preworkout.jpg", alt="Pre Workout", class="img_size")
+
+                            h5.card-title #{product.name}
+                            p.card-text.text-muted #{product.category}
+                            p.card-text-body-secondary.text-justify #{product.description}
+                            p.card-text Price: #{product.price} $
+                            p.card-text Quantiy: #{product.quantity_available}
+                            a.card-link(href=`/manageproducts/edit-product/${product._id}`) Edit
+                            a.card-link(href=`/manageproducts/delete/${product._id}`) Delete
+                        
