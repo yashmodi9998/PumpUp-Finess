@@ -1,0 +1,56 @@
+extends common/layout
+block layout-content 
+
+    .container-fluid
+        .row
+            .col-12.p-0
+                img.img-fluid(src="/images/supplements.jpg",style="height: 650px;width:100%;background-color: rgba(0, 0, 0, 0.5);object-fit: cover;", alt="Banner Image")
+                    
+    section#about-us.py-4(style="background-color: #FAF9F6;")
+        .container
+            .row
+                .col
+                    h2.mb-4.text-center.display-5 About Us
+                    figure.text-center
+                        blockquote.blockquote
+                            p The only way to keep your health is to eat what you don't want, drink what you don't like, and do what you'd rather not.
+                        figcaption.blockquote-footer
+                            | Mark Twain
+                            
+                    p Welcome to PumpUp Nutritions, your ultimate destination for premium supplements and nutritional support. At PumpUp Nutritions, we understand the importance of a healthy and active lifestyle, and we are committed to providing you with top-notch products to fuel your fitness journey. Whether you're an athlete, a fitness enthusiast, or someone on a wellness quest, our carefully curated selection of supplements caters to all your health needs. With a focus on quality, expertise, and customer satisfaction, we strive to be your trusted partner in achieving your fitness goals. Join us in embracing a healthier lifestyle – explore our store and discover a world of supplements designed to elevate your well-being. Welcome to a fitter, stronger, and healthier you!
+                    p Experience the pinnacle of nutritional excellence with our premium selection of products. Each item in our inventory is meticulously chosen to ensure superior quality and effectiveness. Elevate your fitness journey, enhance your well-being, and unlock the path to optimal health. Shop with confidence, knowing that every product is crafted to meet the highest standards. Choose PumpUp for a transformative shopping experience – where your health and satisfaction are our top priorities. Buy our products today and embark on a journey towards a stronger, healthier, and more vibrant you.
+            .text-center.mb-10.mt-4
+                a.btn.btn-light(href="/products", role="button") View our products      
+        
+            
+    .container.py-4
+        .row
+            h2.mb-4.text-center.display-5 Recent Blog Posts
+            .col
+                .card.mb-3
+                    .card-body
+                        h5.card-title.txt_color The Division of Responsibility in Feeding
+                        p.card-text.mb-2 
+                            small.text-muted Published on 12/11/2023
+                        p.card-text Struggling to get your children to eat? If so, you are not alone! This blog post highlights the fundamental aspects of the Division of Responsibility in feeding, its advantages, and its application in challenging food situations.
+                        a(href='#', class='card-link') Read More
+            
+            .col
+                .card.mb-3
+                    .card-body
+                        h5.card-title.text-blue800 The Scoop On Intermittent Fasting
+                        p.card-text.mb-2 
+                            small.text-muted Published on 23/10/2023
+                        p.card-text You might be wondering about intermittent fasting for health, longevity and managing body weight. If you are confused about the common question, “how often should I eat?” and want the advice of a Dietitian, this article is for you. 
+                        a.card-link(href='#') Read More
+            
+            .col
+                .card.mb-3
+                    .card-body
+                        h5.card-title Dim Sum Stuffed Peppers
+                        p.card-text.mb-2 
+                            small.text-muted Published on 15/09/2022
+                        p.card-text Are you a fan of dim sum and wondering how to bring it to your dinner table? Try these dim sum shrimp-stuffed green peppers that are easy to prepare and packed with incredible flavour and nutrients!
+                        a.txt_color(href='#', class='card-link') Read More
+
+

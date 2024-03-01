@@ -1,0 +1,36 @@
+.navbar-brand {
+  margin-left: 20px;
+}
+
+.navbar-nav {
+  margin-right: 20px;
+}
+
+.navbar-nav a.nav-link {
+  color: #363535;
+
+}
+
+.navbar-nav a.nav-link:hover {
+  color: #264384;
+}
+
+.img_size {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+h5.card-title {
+  color: #264384;
+}
+
+.card-link {
+  text-align: center;
+  color: #264384;
+}
+
+/* .icons-white {
+  fill: white;
+  color: white;
+} */
