@@ -3,11 +3,38 @@ block layout-content
  
     div.container
         h2.mb-4.text-center.display-5  Our Products
-        form(action="/products/search", method="get",role="search", class="mb-4 d-flex")
-            .form-group.flex-grow-1
-                input.form-control(type="text", name="searchQuery", placeholder="Search products...")
-            button.btn.btn-light(type="submit") Search
+        h2.mb-3.text-center 
+            button.btn.btn-link(data-bs-toggle="collapse", data-bs-target="#addProductForm", aria-expanded="false", aria-controls="addProductForm") Want to add new Product?
+        .row
+            .col-md-6.collapse#addProductForm    
+                form(action="/products/new", method="post")
+                    .mb-3
+                        label(for="name", class="form-label") Product Name
+                        input(type="text", class="form-control", id="name", name="name", required)
 
+                    .mb-3
+                        label(for="category", class="form-label") Category
+                        select(class="form-select", id="category", name="category", required)
+                            option(value="Creatine") Creatine
+                            option(value="Protein") Protein
+                            option(value="Antioxidants") Antioxidants
+                            option(value="Amino Acids") Amino Acids
+                            option(value="Pre-workout") Pre-workout
+                    .mb-3
+                        label(for="price", class="form-label") Price
+                        input(type="number", class="form-control", id="price", name="price", step="0.01", required)
+
+                    .mb-3
+                        label(for="quantity_available", class="form-label") Quantity Available
+                        input(type="number", class="form-control", id="quantity_available", name="quantity_available", required)
+
+                    .mb-3
+                        label(for="description", class="form-label") Description
+                        textarea(class="form-control", id="description", name="description", rows="3", required)
+
+                    .mb-3
+                        button(type="submit", class="btn btn-light") Add Supplement
+        
         div.row.row-cols-4
             each product in items 
                 div.col-md-3.mb-4
